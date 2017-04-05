@@ -18,6 +18,7 @@ chmod 700 /home/sftpuser/.ssh
 chmod 600 /home/sftpuser/.ssh/authorized_keys
 ```
 
+
 2) Prepare home directory for restricted access
 ```sh
 # the home directory must be owned by root
@@ -38,6 +39,7 @@ Edit `/etc/ssh/sshd_config` and comment out this line, like this:
 # Subsystem sftp /usr/lib/openssh/sftp-server
 ```
 
+
 Edit `/etc/ssh/sshd_config` and add to the **bottom** of the file:
 ```sh
 Subsystem sftp internal-sftp
@@ -46,14 +48,16 @@ Match group sftponly
     X11Forwarding no
     AllowTcpForwarding no
     ForceCommand internal-sftp
-
 ```
-4) estart SSH and if it working.  Check the process id is displayed, otherwise there was some errors
+
+
+4) Restart SSH and if it working.  Check the process id is displayed, otherwise there was some errors
 ```sh
 service ssh restart
 ```
 
-5) Connect via sftp
+
+5) Connect via sftp command line client using private key
 ```sh
 sftp -o IdentityFile=newkey sftpuser@IP.NUMBER
 
