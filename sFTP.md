@@ -27,7 +27,12 @@ chmod ug+rwX /home/sftpuser/uploads
 
 2) Turn off SSH Access, and restrict sftp access to Home directory **/home/sftpuser**:
 
-Edit /etc/ssh/sshd_config and add to the **bottom** of the file:
+Edit `/etc/ssh/sshd_config` and comment out this line, like this:
+```
+# Subsystem sftp /usr/lib/openssh/sftp-server
+```
+
+Edit `/etc/ssh/sshd_config` and add to the **bottom** of the file:
 ```sh
 Subsystem sftp internal-sftp
 Match group sftponly
