@@ -16,7 +16,10 @@ cat /home/sftpuser/.ssh/newkey.pub >> /home/sftpuser/authorized_keys
 chown -R sftpuser:sftpuser /home/sftpuser/.ssh
 chmod 700 /home/sftpuser/.ssh
 chmod 600 /home/sftpuser/.ssh/authorized_keys
+```
 
+2) Prepare home directory for restricted access
+```sh
 # the home directory must be owned by root
 chown root:root /home/sftpuser
 # the home directory must not be writeable by group and others
@@ -27,7 +30,8 @@ chown sftpuser:sftpuser /home/sftpuser/uploads
 chmod ug+rwX /home/sftpuser/uploads
 ```
 
-2) Turn off SSH Access, and restrict sftp access to Home directory **/home/sftpuser**:
+
+3) Turn off SSH Access, and restrict sftp access to Home directory **/home/sftpuser**:
 
 Edit `/etc/ssh/sshd_config` and comment out this line, like this:
 ```
@@ -44,12 +48,12 @@ Match group sftponly
     ForceCommand internal-sftp
 
 ```
-Restart SSH and if it working.  Check the process id is displayed, otherwise there was some errors
+4) estart SSH and if it working.  Check the process id is displayed, otherwise there was some errors
 ```sh
 service ssh restart
 ```
 
-3) Connect via sftp
+5) Connect via sftp
 ```sh
 sftp -o IdentityFile=newkey sftpuser@IP.NUMBER
 
