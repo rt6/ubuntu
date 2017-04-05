@@ -1,6 +1,6 @@
-# SFTP
+# SETUP SFTP SERVER WITH RESTRICTED ACCESS
 
-### Create sftp user (no ssh access) and restrict access to home directory
+### Create sftp user (no ssh access) and restrict write access to user home directory only
 
 1) Create new user and SSH keys
 ```sh
@@ -61,4 +61,14 @@ service ssh restart
 ```sh
 sftp -o IdentityFile=newkey sftpuser@IP.NUMBER
 
+```
+
+
+
+6) Attempts to connect via ssh will be denied
+```sh
+$ ssh sftpuser@IP.NUMBER -i newkey
+Could not chdir to home directory /home/sftpuser: No such file or directory
+This service allows sftp connections only.
+Connection to IP.NUMBER closed.
 ```
