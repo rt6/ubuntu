@@ -1,5 +1,7 @@
 # SFTP
 
+### Create sftp user (no ssh access) and restrict access to home directory
+
 1) Create new user with SSH access
 ```sh
 sudo su
