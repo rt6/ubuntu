@@ -50,6 +50,16 @@ Match group sftponly
     ForceCommand internal-sftp
 ```
 
+*NOTE:* the ChrootDirectory can be any directory but the owner/group must be root with 755 permissions.  If the default directory should be another directory, for example /mnt/dir1 then use the `-d` parameter per below example:
+
+```sh
+Subsystem sftp internal-sftp
+Match group sftponly
+    ChrootDirectory /mnt
+    X11Forwarding no
+    AllowTcpForwarding no
+    ForceCommand internal-sftp -d /dir1
+```
 
 4) Restart SSH and if it working.  Check the process id is displayed, otherwise there was some errors
 ```sh
