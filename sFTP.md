@@ -12,7 +12,7 @@ groups sftpuser
 mkdir -p /home/sftpuser/.ssh
 ssh-keygen -t rsa -b 4096 -C "sftpuser" -f /home/sftpuser/.ssh/newkey
 touch /home/sftpuser/.ssh/authorized_keys
-cat /home/sftpuser/.ssh/newkey.pub >> /home/sftpuser/authorized_keys
+cat /home/sftpuser/.ssh/newkey.pub >> /home/sftpuser/.ssh/authorized_keys
 chown -R sftpuser:sftpuser /home/sftpuser/.ssh
 chmod 700 /home/sftpuser/.ssh
 chmod 600 /home/sftpuser/.ssh/authorized_keys
